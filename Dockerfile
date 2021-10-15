@@ -23,4 +23,4 @@ FROM alpine:latest AS production
 COPY --from=builder /app .
 ## we can then kickoff  our newly compiled
 ## binary executable
-CMD["./main"]
+CMD ["./main"]
