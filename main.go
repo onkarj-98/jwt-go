@@ -1,15 +1,17 @@
 package main
 
 import (
+	hd "jwt-go/handlers"
 	"log"
 	"net/http"
-	hd"jwt-go/handlers"
 )
 
 func main() {
 	http.HandleFunc("/signin", hd.Signin)
-	http.HandleFunc("/welcome",hd.Welcome)
-	http.HandleFunc("/refresh",hd.Refresh)
-	log.Println("Server listening on 8082")
-	http.ListenAndServe(":8022", nil)
+	http.HandleFunc("/welcome", hd.Welcome)
+	http.HandleFunc("/refresh", hd.Refresh)
+
+	log.Println("Listening on localhot:8085")
+	log.Fatal(http.ListenAndServe(":8085", nil))
+
 }
