@@ -1,22 +1,15 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
-	"fmt"
 	"log"
 	"net/http"
+	hd"jwt-go/handlers"
 )
 
 func main() {
-	fmt.Println("ORM")
-
-	myRouter := mux.NewRouter().StrictSlash(true)
-	myRouter.HandleFunc("/users",allUsers).Methods("GET")
-	myRouter.HandleFunc("/user/{name}", deleteUser).Methods("DELETE")
-	myRouter.HandleFunc("/user/{name}/{email}", updateUser).Methods("PUT")
-	myRouter.HandleFunc("/user/{name}/{email}", newUser).Methods("POST")
-	log.Println("Starting server on 8082")
-	log.Fatal(http.ListenAndServe(":8082", myRouter))
-
-
+	http.HandleFunc("/signin", hd.Signin)
+	http.HandleFunc("/welcome",hd.Welcome)
+	http.HandleFunc("/refresh",hd.Refresh)
+	log.Println("Server listening on 8082")
+	http.ListenAndServe(":8022", nil)
 }
