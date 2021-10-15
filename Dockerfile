@@ -10,7 +10,7 @@ WORKDIR /app
 
 # we want to build our application's binary executable
 
-RUN CGO_ENABLED=0 GOOS=linux go build -o main ./...
+RUN CGO_ENABLED=0 GOOS=linux go build -a -o main .
 
 ## the lightweight scratch image will
 ## run our application within
